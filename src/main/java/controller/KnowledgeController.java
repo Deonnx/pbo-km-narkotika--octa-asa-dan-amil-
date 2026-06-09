@@ -26,3 +26,43 @@ public class KnowledgeController {
             return false;
         }
     }
+
+    public ArrayList<Putusan> cariPutusan(String keyword, String mode) {
+        ArrayList<Putusan> hasil = new ArrayList<>();
+        if (mode.equalsIgnoreCase("nomor")) {
+            Putusan p = repository.cariByNomor(keyword);
+            if (p != null) {
+                hasil.add(p);
+            }
+        } else if (mode.equalsIgnoreCase("nama")) {
+            hasil = repository.cariByNama(keyword);
+        }
+        return hasil;
+    }
+
+    public ArrayList<Putusan> filterPutusan(String kriteria, String nilai) {
+        if (kriteria.equalsIgnoreCase("jenis")) {
+            return repository.filterByJenis(nilai);
+        } else if (kriteria.equalsIgnoreCase("pengadilan")) {
+            return repository.filterByPengadilan(nilai);
+        }
+        return new ArrayList<>();
+    }
+
+    public boolean hapusPutusan(String nomor) {
+        return repository.hapus(nomor);
+    }
+
+    public StatistikPutusan getStatistik() {
+        StatistikPutusan stat = new StatistikPutusan(repository.getDaftarSemua());
+        stat.hitungSemua();
+        return stat;
+    }
+
+    public void tampilkanSemua() {
+        ArrayList<Putusan> daftar = repository.getDaftarSemua();
+        for (Putusan p : daftar) {
+            p.tampilkan();
+        }
+    }
+}
