@@ -1,4 +1,4 @@
-package View;
+package com.example.pbo.View;
 
 public class ConsoleView {
 }
