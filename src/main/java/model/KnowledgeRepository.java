@@ -1,0 +1,20 @@
+package model;
+
+import java.util.ArrayList;
+
+public class KnowledgeRepository {
+    private ArrayList<Putusan> daftarPutusan = new ArrayList<>();
+
+    public KnowledgeRepository() {
+        muatDataAwal();
+    }
+
+    public void simpan(Putusan p) { daftarPutusan.add(p); }
+    public ArrayList<Putusan> getDaftarSemua() { return daftarPutusan; }
+
+    private void muatDataAwal() {
+        simpan(new Putusan("1/Pid/2024", "Andi", "Sabu", 60, 1000000000));
+        simpan(new Putusan("2/Pid/2024", "Budi", "Ganja", 12, 0));
+        // Tambahkan data lainnya di sini...
+    }
+}
