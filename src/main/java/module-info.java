@@ -11,6 +11,15 @@ module com.example.pbo {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.pbo to javafx.fxml;
-    exports com.example.pbo;
+
+    opens com.example.pbo.App to javafx.graphics;
+    exports com.example.pbo.App;
+
+
+    opens com.example.pbo.View to javafx.fxml;
+    exports com.example.pbo.View;
+
+    exports com.example.pbo.controller;
+    exports com.example.pbo.model;
+}
 }
