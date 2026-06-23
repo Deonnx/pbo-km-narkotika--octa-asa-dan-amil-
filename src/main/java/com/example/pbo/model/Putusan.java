@@ -1,4 +1,4 @@
-package model;
+package com.example.pbo.model;
 
 public class Putusan implements Comparable<Putusan> {
     private String nomorPerkara;

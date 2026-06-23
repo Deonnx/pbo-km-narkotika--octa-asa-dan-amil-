@@ -3,7 +3,7 @@ tugasakhir
 
 
 ### 1. Layer MODEL (Dikerjakan oleh: asa)
-* **Fokus Direktori:** `src/main/java/com.example.pbo.model/`
+* **Fokus Direktori:** `src/main/java/com.example.pbo.com.example.pbo.model/`
 * **Tugas:** Membuat struktur data, relasi, dan perhitungan.
 
 * **File yang dikelola:** `Putusan.java`, `KnowledgeRepository.java`, `StatistikPutusan.java`.

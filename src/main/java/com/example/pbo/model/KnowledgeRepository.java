@@ -1,4 +1,4 @@
-package model;
+package com.example.pbo.model;
 
 import java.util.ArrayList;
 
