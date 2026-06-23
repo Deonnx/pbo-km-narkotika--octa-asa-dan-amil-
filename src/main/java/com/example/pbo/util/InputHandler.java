@@ -1,39 +1,41 @@
 package com.example.pbo.util;
 
-import java.util.Scanner;
-
 public class InputHandler {
 
-    public static int validasiInt(String prompt, Scanner sc) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                return Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Input harus berupa angka bulat. Silakan coba lagi.");
+    public static int validasiInt(String input, String fieldName) throws IllegalArgumentException {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " tidak boleh kosong.");
+        }
+        try {
+            int value = Integer.parseInt(input.trim());
+            if (value < 0) {
+                throw new IllegalArgumentException(fieldName + " tidak boleh bernilai negatif.");
             }
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(fieldName + " harus berupa angka bulat.");
         }
     }
 
-    public static double validasiDouble(String prompt, Scanner sc) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                return Double.parseDouble(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Error: Input harus berupa angka desimal/rupiah. Silakan coba lagi.");
+    public static double validasiDouble(String input, String fieldName) throws IllegalArgumentException {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " tidak boleh kosong.");
+        }
+        try {
+            double value = Double.parseDouble(input.trim());
+            if (value < 0) {
+                throw new IllegalArgumentException(fieldName + " tidak boleh bernilai negatif.");
             }
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(fieldName + " harus berupa angka desimal.");
         }
     }
 
-    public static String validasiString(String prompt, Scanner sc) {
-        while (true) {
-            System.out.print(prompt);
-            String input = sc.nextLine().trim();
-            if (!input.isEmpty()) {
-                return input;
-            }
-            System.out.println("Error: Input tidak boleh kosong.");
+    public static String validasiString(String input, String fieldName) throws IllegalArgumentException {
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " tidak boleh kosong.");
         }
+        return input.trim();
     }
 }
