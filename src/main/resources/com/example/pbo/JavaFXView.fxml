@@ -1,17 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.pbo.controller.KnowledgeController">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.pbo.View.JavaFXController">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
-S
+    <top>
+        <VBox alignment="CENTER">
+            <Label text="KMS Putusan Pengadilan Narkotika"
+                   style="-fx-font-size:20px; -fx-font-weight:bold;"/>
+        </VBox>
+    </top>
+
+    <left>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <TextField fx:id="txtNomor"
+                       promptText="Masukkan nomor perkara"/>
+
+            <TextField fx:id="txtNama"
+                       promptText="Masukkan nama terdakwa"/>
+
+            <TextField fx:id="txtJenis"
+                       promptText="Masukkan jenis narkotika"/>
+
+            <TextField fx:id="txtVonis"
+                       promptText="Contoh: 60"/>
+
+            <TextField fx:id="txtDenda"
+                       promptText="Contoh: 1000000"/>
+
+            <Button text="Tambah Data"
+                    onAction="#handleTambah"/>
+
+            <Button text="Statistik"
+                    onAction="#handleStatistik"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView fx:id="tablePutusan">
+
+                   <placeholder>
+                       <Label text="Tidak ada data"/>
+                   </placeholder>
+
+            <columns>
+
+                <TableColumn fx:id="colNomor"
+                             text="Nomor"
+                             prefWidth="150"/>
+
+                <TableColumn fx:id="colNama"
+                             text="Nama"
+                             prefWidth="150"/>
+
+                <TableColumn fx:id="colJenis"
+                             text="Jenis"
+                             prefWidth="120"/>
+
+                <TableColumn fx:id="colVonis"
+                             text="Vonis"
+                             prefWidth="80"/>
+
+                <TableColumn fx:id="colDenda"
+                             text="Denda"
+                             prefWidth="150"/>
+
+            </columns>
+
+        </TableView>
+    </center>
+
+</BorderPane>
