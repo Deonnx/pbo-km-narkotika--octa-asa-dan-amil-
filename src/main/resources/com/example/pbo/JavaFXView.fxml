@@ -42,6 +42,9 @@
             <Button text="Tambah Data"
                     onAction="#handleTambah"/>
 
+            <Button text="Hapus Data"
+                    onAction="#handleHapus"/>
+
             <Button text="Statistik"
                     onAction="#handleStatistik"/>
         </VBox>

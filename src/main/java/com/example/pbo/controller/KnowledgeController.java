@@ -33,4 +33,8 @@ public class KnowledgeController {
     public double getRataRataVonis() {
         return statistik.hitungRataRataVonis(repository.getDaftarSemua());
     }
+
+    public boolean hapusPutusan(String nomorPerkara) {
+        return repository.hapusPutusan(nomorPerkara);
+    }
 }

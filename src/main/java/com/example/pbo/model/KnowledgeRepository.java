@@ -17,4 +17,17 @@ public class KnowledgeRepository {
         simpan(new Putusan("2/Pid/2024", "Budi", "Ganja", 12, 0));
         // Tambahkan data lainnya di sini...
     }
+
+    public boolean hapusPutusan(String nomorPerkara) {
+
+        for (Putusan p : daftarPutusan) {
+
+            if (p.getNomorPerkara().equals(nomorPerkara)) {
+                daftarPutusan.remove(p);
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

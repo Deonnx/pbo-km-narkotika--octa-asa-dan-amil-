@@ -139,4 +139,25 @@ public class JavaFXController {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void handleHapus() {
+
+        Putusan selected = tablePutusan.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Pilih data yang ingin dihapus!");
+            alert.showAndWait();
+
+            return;
+        }
+
+        controller.hapusPutusan(
+                selected.getNomorPerkara()
+        );
+
+        refreshTable();
+    }
 }

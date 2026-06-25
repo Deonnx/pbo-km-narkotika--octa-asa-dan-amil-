@@ -88,7 +88,7 @@ public class ConsoleView {
 
     ConsoleView view = new ConsoleView(controller);
     int pilihan;
-    do {
+    /*do {
         pilihan = view.tampilkanMenu();
         switch (pilihan) {
 
@@ -112,5 +112,5 @@ public class ConsoleView {
                 System.out.println("Pilihan tidak valid");
         }
 
-    } while (pilihan != 0);
+    } while (pilihan != 0);*/
 }
