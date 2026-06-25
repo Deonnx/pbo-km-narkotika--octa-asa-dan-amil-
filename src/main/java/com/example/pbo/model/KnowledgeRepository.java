@@ -30,4 +30,18 @@ public class KnowledgeRepository {
 
         return false;
     }
+
+    public void updatePutusan(String nomor, String nama, String jenis, int vonis, double denda) {
+
+        for (Putusan p : daftarPutusan) {
+
+            if (p.getNomorPerkara().equals(nomor)) {
+
+                daftarPutusan.remove(p);
+                daftarPutusan.add(new Putusan(nomor, nama, jenis, vonis, denda));
+
+                break;
+            }
+        }
+    }
 }

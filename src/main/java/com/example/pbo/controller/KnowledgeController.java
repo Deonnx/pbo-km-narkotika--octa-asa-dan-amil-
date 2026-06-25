@@ -37,4 +37,8 @@ public class KnowledgeController {
     public boolean hapusPutusan(String nomorPerkara) {
         return repository.hapusPutusan(nomorPerkara);
     }
+
+    public void updatePutusan(String nomor, String nama, String jenis, String vonis, String denda) {
+        repository.updatePutusan(nomor, nama, jenis, Integer.parseInt(vonis), Double.parseDouble(denda));
+    }
 }

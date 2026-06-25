@@ -45,6 +45,9 @@
             <Button text="Hapus Data"
                     onAction="#handleHapus"/>
 
+            <Button text="Update Data"
+                    onAction="#handleUpdate"/>
+
             <Button text="Statistik"
                     onAction="#handleStatistik"/>
         </VBox>

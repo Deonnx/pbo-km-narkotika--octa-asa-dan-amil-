@@ -84,6 +84,24 @@ public class JavaFXController {
                 new PropertyValueFactory<>("vonisDenda"));
 
         refreshTable();
+
+        tablePutusan.getSelectionModel()
+                .selectedItemProperty()
+                .addListener((obs, oldData, newData) -> {
+
+                    if (newData != null) {
+
+                        txtNomor.setText(newData.getNomorPerkara());
+
+                        txtNama.setText(newData.getNamaTerdakwa());
+
+                        txtJenis.setText(newData.getJenisNarkotika());
+
+                        txtVonis.setText(String.valueOf(newData.getVonisHukuman()));
+
+                        txtDenda.setText(String.valueOf(newData.getVonisDenda()));
+                    }
+                });
     }
 
     @FXML
@@ -159,5 +177,32 @@ public class JavaFXController {
         );
 
         refreshTable();
+    }
+
+    @FXML
+    private void handleUpdate() {
+
+        try {
+
+            controller.updatePutusan(
+                    txtNomor.getText(),
+                    txtNama.getText(),
+                    txtJenis.getText(),
+                    txtVonis.getText(),
+                    txtDenda.getText()
+            );
+
+            refreshTable();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Data berhasil diupdate");
+            alert.showAndWait();
+
+        } catch (Exception e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 }
