@@ -22,4 +22,3 @@ module com.example.pbo {
     exports com.example.pbo.controller;
     exports com.example.pbo.model;
 }
-}
