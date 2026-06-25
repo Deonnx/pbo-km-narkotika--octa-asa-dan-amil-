@@ -85,4 +85,58 @@ public class JavaFXController {
 
         refreshTable();
     }
+
+    @FXML
+    private void handleStatistik() {
+
+        if (controller == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Peringatan");
+            alert.setHeaderText(null);
+            alert.setContentText("Controller belum terinisialisasi.");
+            alert.showAndWait();
+            return;
+        }
+
+        double rataRata = controller.getRataRataVonis();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Statistik");
+        alert.setHeaderText(null);
+        alert.setContentText("Rata-rata Vonis: " + rataRata + " bulan");
+
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleTambah() {
+
+        try {
+
+            String nomor = txtNomor.getText();
+            String nama = txtNama.getText();
+            String jenis = txtJenis.getText();
+            String vonis = txtVonis.getText();
+            String denda = txtDenda.getText();
+
+            if (controller != null) {
+                controller.tambahPutusan(nomor, nama, jenis, vonis, denda);
+                refreshTable(); clearForm();
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sukses");
+            alert.setHeaderText(null);
+            alert.setContentText("Data berhasil ditambahkan!");
+            alert.showAndWait();
+
+        } catch (Exception e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
 }
