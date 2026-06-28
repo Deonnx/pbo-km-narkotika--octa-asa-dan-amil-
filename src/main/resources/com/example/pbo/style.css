@@ -1,0 +1,992 @@
+/*=====================================================
+=                    ROOT
+======================================================*/
+
+.root{
+
+    -fx-background-color:#F4F7FB;
+    -fx-font-family:"Segoe UI";
+}
+
+
+/*=====================================================
+=                    HEADER
+======================================================*/
+
+.header{
+
+    -fx-background-color:
+            linear-gradient(
+                    to right,
+                    #2563EB,
+                    #60A5FA);
+
+    -fx-padding:18 25 18 25;
+    -fx-alignment:CENTER_LEFT;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.18),
+                    12,
+                    0,
+                    0,
+                    3);
+}
+
+
+/*=====================================================
+=                    SIDEBAR
+======================================================*/
+
+.sidebar{
+
+    -fx-background-color:
+
+            linear-gradient(
+                    to bottom,
+                    #60A5FA,
+                    #2563EB);
+
+    -fx-padding:20;
+    -fx-spacing:15;
+}
+
+
+.sidebar-title{
+
+    -fx-text-fill:white;
+    -fx-font-size:28px;
+    -fx-font-weight:bold;
+
+}
+
+
+/* Sidebar Button */
+
+.sidebar .button{
+
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+    -fx-pref-height:42;
+    -fx-pref-width:150;
+    -fx-background-radius:10;
+    -fx-cursor:hand;
+}
+
+.sidebar .button:hover{
+
+    -fx-background-color:white;
+    -fx-text-fill:#2563EB;
+}
+
+.sidebar .button:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+
+/*=====================================================
+=                    CARD
+======================================================*/
+
+.card{
+
+    -fx-background-color:white;
+    -fx-background-radius:18;
+    -fx-border-radius:18;
+    -fx-border-color:#E2E8F0;
+    -fx-border-width:1;
+    -fx-padding:22;
+    -fx-spacing:15;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.12),
+                    12,
+                    0,
+                    0,
+                    3);
+
+}
+
+
+/*=====================================================
+=                    TITLE
+======================================================*/
+
+.title{
+
+    -fx-font-size:22px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#2563EB;
+
+}
+
+
+/*=====================================================
+=                    FORM
+======================================================*/
+
+.label-form{
+
+    -fx-font-size:13px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#334155;
+
+}
+
+
+/*=====================================================
+=                    TEXTFIELD
+======================================================*/
+
+.text-field{
+
+    -fx-background-color:white;
+    -fx-border-color:#CBD5E1;
+    -fx-border-radius:10;
+    -fx-background-radius:10;
+    -fx-padding:9;
+    -fx-font-size:13px;
+    -fx-prompt-text-fill:#94A3B8;
+
+}
+
+
+.text-field:hover{
+
+    -fx-border-color:#60A5FA;
+
+}
+
+
+.text-field:focused{
+
+    -fx-border-color:#2563EB;
+    -fx-border-width:2;
+
+}
+
+
+/*=====================================================
+=                    SEPARATOR
+======================================================*/
+
+.separator .line{
+
+    -fx-border-color:#E5E7EB;
+
+}
+
+/*=====================================================
+=                    BUTTON
+======================================================*/
+
+/* ---------- Tambah ---------- */
+
+.btn-add{
+
+    -fx-background-color:#3B82F6;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-font-size:14px;
+    -fx-background-radius:10;
+    -fx-pref-height:42;
+    -fx-cursor:hand;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.15),
+                    6,
+                    0,
+                    0,
+                    2);
+}
+
+.btn-add:hover{
+
+    -fx-background-color:#2563EB;
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+}
+
+.btn-add:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+
+/* ---------- Update ---------- */
+
+.btn-update{
+
+    -fx-background-color:#22C55E;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-font-size:14px;
+    -fx-background-radius:10;
+    -fx-pref-height:42;
+    -fx-cursor:hand;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.15),
+                    6,
+                    0,
+                    0,
+                    2);
+}
+
+.btn-update:hover{
+
+    -fx-background-color:#16A34A;
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+}
+
+.btn-update:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+
+/* ---------- Delete ---------- */
+
+.btn-delete{
+
+    -fx-background-color:#EF4444;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-font-size:14px;
+    -fx-background-radius:10;
+    -fx-pref-height:42;
+    -fx-cursor:hand;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.15),
+                    6,
+                    0,
+                    0,
+                    2);
+}
+
+.btn-delete:hover{
+
+    -fx-background-color:#DC2626;
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+}
+
+.btn-delete:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+
+/* ---------- Statistik ---------- */
+
+.btn-stat{
+
+    -fx-background-color:#8B5CF6;
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-font-size:14px;
+    -fx-background-radius:10;
+    -fx-pref-height:42;
+    -fx-cursor:hand;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.15),
+                    6,
+                    0,
+                    0,
+                    2);
+}
+
+.btn-stat:hover{
+
+    -fx-background-color:#7C3AED;
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+}
+
+.btn-stat:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+
+/*=====================================================
+=                    TABLE VIEW
+======================================================*/
+
+.table-view{
+
+    -fx-background-color:white;
+    -fx-background-radius:15;
+    -fx-border-radius:15;
+    -fx-border-color:#E2E8F0;
+    -fx-border-width:1;
+    -fx-padding:4;
+    -fx-background-insets:0;
+
+}
+
+
+/* Header Background */
+
+.table-view .column-header-background{
+
+    -fx-background-color:#3B82F6;
+    -fx-background-radius:15 15 0 0;
+
+}
+
+
+/* Header */
+
+.table-view .column-header{
+
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+
+}
+
+
+/* Header Text */
+
+.table-view .column-header .label{
+
+    -fx-text-fill:white;
+    -fx-font-weight:bold;
+    -fx-font-size:13px;
+    -fx-alignment:CENTER;
+
+}
+
+
+/* Cell */
+
+.table-cell{
+
+    -fx-padding:10;
+    -fx-font-size:13px;
+    -fx-alignment:CENTER_LEFT;
+
+}
+
+
+/* Row */
+
+.table-row-cell{
+
+    -fx-background-color:white;
+    -fx-border-color:#F1F5F9;
+
+}
+
+
+/* Zebra */
+
+.table-row-cell:odd{
+
+    -fx-background-color:#FAFCFF;
+
+}
+
+
+/* Hover */
+
+.table-row-cell:hover{
+
+    -fx-background-color:#EAF3FF;
+
+}
+
+
+/* Selected */
+
+.table-row-cell:selected{
+
+    -fx-background-color:#BFDBFE;
+
+}
+
+
+.table-row-cell:filled:selected{
+
+    -fx-text-fill:black;
+
+}
+
+
+/* Placeholder */
+
+.table-view .placeholder .label{
+
+    -fx-text-fill:#64748B;
+    -fx-font-size:14px;
+
+}
+
+
+/*=====================================================
+=                    SCROLLBAR
+======================================================*/
+
+.scroll-bar{
+
+    -fx-background-color:transparent;
+
+}
+
+
+.scroll-bar .track{
+
+    -fx-background-color:transparent;
+
+}
+
+
+.scroll-bar .thumb{
+
+    -fx-background-color:#93C5FD;
+    -fx-background-radius:20;
+
+}
+
+
+.scroll-bar .thumb:hover{
+
+    -fx-background-color:#60A5FA;
+
+}
+
+
+.increment-button,
+.decrement-button{
+
+    -fx-background-color:transparent;
+    -fx-padding:0;
+
+}
+
+
+.increment-arrow,
+.decrement-arrow{
+
+    -fx-background-color:transparent;
+
+}
+
+/*=====================================================
+=                    DASHBOARD CARD
+======================================================*/
+
+.card-total,
+.card-rata,
+.card-denda{
+
+    -fx-background-radius:22;
+    -fx-padding:28;
+    -fx-spacing:15;
+    -fx-alignment:center;
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(0,0,0,.18),
+                    14,
+                    0,
+                    0,
+                    4);
+
+}
+
+.card-total{
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #60A5FA,
+                    #3B82F6);
+
+}
+
+.card-rata{
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #3B82F6,
+                    #2563EB);
+
+}
+
+.card-denda{
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #2563EB,
+                    #1D4ED8);
+
+}
+
+/*=====================================================
+=                 DASHBOARD COMPONENT
+======================================================*/
+
+.dashboard-icon{
+
+    -fx-font-size:46px;
+
+}
+
+.dashboard-title{
+
+    -fx-font-size:15px;
+    -fx-font-weight:bold;
+    -fx-text-fill:white;
+
+}
+
+.dashboard-value{
+
+    -fx-font-size:28px;
+    -fx-font-weight:bold;
+    -fx-text-fill:white;
+    -fx-wrap-text:true;
+    -fx-alignment:center;
+
+}
+
+
+/*=====================================================
+=                    ACTIVITY
+======================================================*/
+
+.activity-title{
+
+    -fx-font-size:15px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#2563EB;
+
+}
+
+.activity-text{
+
+    -fx-font-size:14px;
+    -fx-text-fill:#475569;
+
+}
+
+.activity-item{
+
+    -fx-background-color:#F8FAFC;
+    -fx-background-radius:12;
+    -fx-padding:12;
+    -fx-border-color:#E2E8F0;
+    -fx-border-radius:12;
+
+}
+
+.activity-item:hover{
+
+    -fx-background-color:#EFF6FF;
+
+}
+
+
+/*=====================================================
+=                    CHART
+======================================================*/
+
+.chart-title{
+
+    -fx-font-size:19px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#2563EB;
+
+}
+
+.chart-desc{
+
+    -fx-font-size:13px;
+    -fx-text-fill:#64748B;
+
+}
+
+.chart-legend{
+
+    -fx-font-size:14px;
+    -fx-text-fill:#374151;
+
+}
+
+.chart-pie-label{
+
+    -fx-font-size:12px;
+    -fx-font-weight:bold;
+
+}
+
+
+/*=====================================================
+=                    PIE CHART
+======================================================*/
+
+.chart-pie{
+
+    -fx-label-line-length:15;
+    -fx-start-angle:90;
+
+}
+
+
+/* Hover Effect */
+
+.chart-pie:hover{
+
+    -fx-cursor:hand;
+
+}
+
+
+/*=====================================================
+=                    BAR CHART
+======================================================*/
+
+.chart-bar{
+
+    -fx-bar-fill:#3B82F6;
+
+}
+
+
+/* Grid */
+
+.chart-vertical-grid-lines{
+
+    -fx-stroke:#E2E8F0;
+
+}
+
+.chart-horizontal-grid-lines{
+
+    -fx-stroke:#E2E8F0;
+
+}
+
+
+/* Plot */
+
+.chart-plot-background{
+
+    -fx-background-color:white;
+
+}
+
+
+/* Axis */
+
+.axis{
+
+    -fx-tick-label-fill:#475569;
+    -fx-font-size:12px;
+
+}
+
+
+/*=====================================================
+=                    LEGEND
+======================================================*/
+
+.legend{
+
+    -fx-background-color:transparent;
+
+}
+
+.legend-item{
+
+    -fx-font-size:13px;
+
+}
+
+.legend-color-symbol{
+
+    -fx-background-radius:50%;
+
+}
+
+
+/*=====================================================
+=                    TOOLTIP
+======================================================*/
+
+.tooltip{
+
+    -fx-background-color:white;
+    -fx-background-radius:10;
+    -fx-border-radius:10;
+    -fx-border-color:#CBD5E1;
+    -fx-border-width:1;
+    -fx-text-fill:#1E293B;
+    -fx-font-size:13px;
+    -fx-padding:8;
+
+}
+
+/*=====================================================
+=                    INSIGHT CARD
+======================================================*/
+
+.insight-card{
+
+    -fx-background-color:#EFF6FF;
+    -fx-background-radius:20;
+    -fx-border-radius:20;
+    -fx-border-color:#BFDBFE;
+    -fx-border-width:2;
+    -fx-padding:25;
+    -fx-spacing:15;
+
+}
+
+
+.insight-title{
+
+    -fx-font-size:20px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#1D4ED8;
+
+}
+
+
+.insight-subtitle{
+
+    -fx-font-size:15px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#2563EB;
+
+}
+
+
+.insight-text{
+
+    -fx-font-size:15px;
+    -fx-text-fill:#334155;
+    -fx-wrap-text:true;
+
+}
+
+
+.insight-item{
+
+    -fx-background-color:white;
+    -fx-background-radius:12;
+    -fx-border-radius:12;
+    -fx-border-color:#DBEAFE;
+    -fx-padding:12;
+
+}
+
+
+.insight-item:hover{
+
+    -fx-background-color:#F8FAFC;
+
+}
+
+
+
+/*=====================================================
+=                    CUSTOM LEGEND
+======================================================*/
+
+.legend-box{
+
+    -fx-spacing:10;
+    -fx-padding:10 0 0 0;
+
+}
+
+
+.legend-item{
+
+    -fx-alignment:CENTER_LEFT;
+    -fx-spacing:10;
+
+}
+
+
+.legend-color{
+
+    -fx-font-size:18px;
+
+}
+
+
+.legend-text{
+
+    -fx-font-size:14px;
+    -fx-text-fill:#334155;
+
+}
+
+
+
+/*=====================================================
+=                    TOOLTIP
+======================================================*/
+
+.tooltip{
+
+    -fx-background-color:white;
+    -fx-text-fill:#334155;
+    -fx-background-radius:10;
+    -fx-border-radius:10;
+    -fx-border-color:#CBD5E1;
+    -fx-padding:10;
+    -fx-font-size:13px;
+
+}
+
+
+
+/*=====================================================
+=                    HOVER EFFECT
+======================================================*/
+
+.card:hover{
+
+    -fx-effect:
+            dropshadow(
+                    gaussian,
+                    rgba(37,99,235,.18),
+                    18,
+                    0,
+                    0,
+                    5);
+
+}
+
+
+.card-total:hover,
+.card-rata:hover,
+.card-denda:hover{
+
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+
+}
+
+
+
+/*=====================================================
+=                    CHART EFFECT
+======================================================*/
+
+.chart:hover{
+
+    -fx-cursor:hand;
+
+}
+
+
+.chart-pie-label{
+
+    -fx-font-size:12px;
+    -fx-font-weight:bold;
+
+}
+
+
+
+/*=====================================================
+=                    SCROLLPANE
+======================================================*/
+
+.scroll-pane{
+
+    -fx-background-color:transparent;
+
+}
+
+
+.scroll-pane>.viewport{
+
+    -fx-background-color:transparent;
+
+}
+
+
+.scroll-pane{
+
+    -fx-background-insets:0;
+    -fx-padding:0;
+
+}
+
+
+
+/*=====================================================
+=                    ANIMATION READY
+======================================================*/
+
+.button{
+
+    -fx-cursor:hand;
+
+}
+
+
+.button:hover{
+
+    -fx-scale-x:1.02;
+    -fx-scale-y:1.02;
+
+}
+
+
+.button:pressed{
+
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+
+}
+
+
+
+/*=====================================================
+=                    RESPONSIVE
+======================================================*/
+
+.dashboard-value{
+
+    -fx-text-alignment:center;
+
+}
+
+
+.chart-desc{
+
+    -fx-wrap-text:true;
+
+}
+
+
+.insight-text{
+
+    -fx-wrap-text:true;
+
+}
