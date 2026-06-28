@@ -87,30 +87,4 @@ public class ConsoleView {
     }
 
     ConsoleView view = new ConsoleView(controller);
-    int pilihan;
-    /*do {
-        pilihan = view.tampilkanMenu();
-        switch (pilihan) {
-
-            case 1:
-                view.menuTambahPutusan();
-                break;
-
-            case 2:
-                view.tampilkanDaftarPutusan();
-                break;
-
-            case 3:
-                view.tampilkanStatistik();
-                break;
-
-            case 0:
-                System.out.println("Terima kasih");
-                break;
-
-            default:
-                System.out.println("Pilihan tidak valid");
-        }
-
-    } while (pilihan != 0);*/
-}
+    int pilihan;}
