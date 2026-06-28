@@ -3,88 +3,464 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.pbo.View.JavaFXController">
+            fx:controller="com.example.pbo.View.JavaFXController"
+            stylesheets="@style.css">
 
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
+    <!-- ================= HEADER ================= -->
 
     <top>
-        <VBox alignment="CENTER">
-            <Label text="KMS Putusan Pengadilan Narkotika"
-                   style="-fx-font-size:20px; -fx-font-weight:bold;"/>
-        </VBox>
-    </top>
 
-    <left>
-        <VBox spacing="10">
+        <HBox alignment="CENTER_LEFT"
+              spacing="15"
+              styleClass="header">
+
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets top="15" right="20" bottom="15" left="20"/>
             </padding>
 
-            <TextField fx:id="txtNomor"
-                       promptText="Masukkan nomor perkara"/>
+            <Label text="⚖"
+                   style="-fx-font-size:28px;
+                          -fx-text-fill:white;"/>
 
-            <TextField fx:id="txtNama"
-                       promptText="Masukkan nama terdakwa"/>
+            <Label text="KMS Putusan Pengadilan Narkotika"
+                   style="-fx-font-size:24px;
+                          -fx-font-weight:bold;
+                          -fx-text-fill:white;"/>
 
-            <TextField fx:id="txtJenis"
-                       promptText="Masukkan jenis narkotika"/>
+        </HBox>
 
-            <TextField fx:id="txtVonis"
-                       promptText="Contoh: 60"/>
+    </top>
 
-            <TextField fx:id="txtDenda"
-                       promptText="Contoh: 1000000"/>
+    <!-- ================= SIDEBAR ================= -->
 
-            <Button text="Tambah Data"
-                    onAction="#handleTambah"/>
+    <left>
 
-            <Button text="Hapus Data"
-                    onAction="#handleHapus"/>
+        <VBox spacing="20"
+              prefWidth="180"
+              alignment="TOP_CENTER"
+              styleClass="sidebar">
 
-            <Button text="Update Data"
-                    onAction="#handleUpdate"/>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
 
-            <Button text="Statistik"
-                    onAction="#handleStatistik"/>
+            <Label text="⚖ KMS"
+                   styleClass="sidebar-title"/>
+
+            <Button text="🏛 Dashboard"
+                    prefWidth="140"
+                    onAction="#showDashboard"/>
+
+            <Button text="⚖ Data Putusan"
+                    prefWidth="140"
+                    onAction="#showData"/>
+
+            <Button text="📈 Statistik"
+                    prefWidth="140"
+                    onAction="#showStatistik"/>
+
         </VBox>
+
     </left>
 
+    <!-- ================= CONTENT ================= -->
+
     <center>
-        <TableView fx:id="tablePutusan">
 
-                   <placeholder>
-                       <Label text="Tidak ada data"/>
-                   </placeholder>
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED"
+                    pannable="true"
+                    styleClass="main-scroll">
 
-            <columns>
+        <StackPane fx:id="contentPane">
 
-                <TableColumn fx:id="colNomor"
-                             text="Nomor"
-                             prefWidth="150"/>
+            <!-- =================== DASHBOARD =================== -->
 
-                <TableColumn fx:id="colNama"
-                             text="Nama"
-                             prefWidth="150"/>
+            <VBox fx:id="dashboardPane"
+                  spacing="25"
+                  visible="true"
+                  managed="true">
 
-                <TableColumn fx:id="colJenis"
-                             text="Jenis"
-                             prefWidth="120"/>
+                <padding>
+                    <Insets top="25" right="30" bottom="25" left="30"/>
+                </padding>
 
-                <TableColumn fx:id="colVonis"
-                             text="Vonis"
-                             prefWidth="80"/>
+                <Label text="Dashboard"
+                       styleClass="title"/>
 
-                <TableColumn fx:id="colDenda"
-                             text="Denda"
-                             prefWidth="150"/>
+                <HBox spacing="25"
+                      fillHeight="true">
 
-            </columns>
+                    <!-- Total Putusan -->
 
-        </TableView>
+                    <VBox alignment="CENTER"
+                          prefHeight="170"
+                          HBox.hgrow="ALWAYS"
+                          maxWidth="Infinity"
+                          styleClass="card-total">
+
+                        <Label text="📄"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Total Putusan"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblTotalPutusan"
+                               text="0"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                    <!-- Rata-rata -->
+
+                    <VBox alignment="CENTER"
+                          prefHeight="170"
+                          HBox.hgrow="ALWAYS"
+                          maxWidth="Infinity"
+                          styleClass="card-rata">
+
+                        <Label text="⚖"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Rata-rata Vonis"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblRataVonis"
+                               text="0 Bulan"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                    <!-- Total Denda -->
+
+                    <VBox alignment="CENTER"
+                          prefHeight="170"
+                          HBox.hgrow="ALWAYS"
+                          maxWidth="Infinity"
+                          styleClass="card-denda">
+
+                        <Label text="💰"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Total Denda"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblTotalDenda"
+                               text="Rp0"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                </HBox>
+                        <!-- AKTIVITAS -->
+
+                <VBox spacing="15"
+                      styleClass="card">
+
+                    <Label text="📋 Aktivitas Terbaru"
+                           styleClass="title"/>
+
+                    <Separator/>
+
+                    <VBox fx:id="activityBox"
+                          spacing="10"/>
+
+                </VBox>
+
+            </VBox>
+
+            <!-- =================== DATA =================== -->
+
+            <HBox fx:id="dataPane"
+                  spacing="20"
+                  visible="false"
+                  managed="false">
+
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <!-- FORM -->
+
+                <VBox spacing="15"
+                      prefWidth="320"
+                      styleClass="card">
+
+                    <Label text="Form Input Putusan"
+                           styleClass="title"/>
+
+                    <Separator/>
+
+                    <VBox spacing="5">
+                        <Label text="📄 Nomor Perkara"
+                               styleClass="label-form"/>
+                        <TextField fx:id="txtNomor"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="👤 Nama Terdakwa"
+                               styleClass="label-form"/>
+                        <TextField fx:id="txtNama"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="💊 Jenis Narkotika"
+                               styleClass="label-form"/>
+                        <TextField fx:id="txtJenis"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="⚖ Vonis Hukuman"
+                               styleClass="label-form"/>
+                        <TextField fx:id="txtVonis"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="💰 Vonis Denda"
+                               styleClass="label-form"/>
+                        <TextField fx:id="txtDenda"/>
+                    </VBox>
+
+                    <Separator/>
+
+                    <Button text="➕ Tambah Data"
+                            styleClass="btn-add"
+                            onAction="#handleTambah"/>
+
+                    <Button text="✏ Update Data"
+                            styleClass="btn-update"
+                            onAction="#handleUpdate"/>
+
+                    <Button text="🗑 Hapus Data"
+                            styleClass="btn-delete"
+                            onAction="#handleHapus"/>
+
+                </VBox>
+
+                <!-- TABLE -->
+
+                <VBox spacing="15"
+                      HBox.hgrow="ALWAYS"
+                      styleClass="card">
+
+                    <Label text="Daftar Putusan"
+                           styleClass="title"/>
+
+                    <HBox spacing="10">
+
+                        <TextField fx:id="txtCari"
+                                   HBox.hgrow="ALWAYS"
+                                   promptText="Cari data..."/>
+
+                        <Button text="🔍 Cari"
+                                styleClass="btn-add"
+                                onAction="#handleCari"/>
+
+                    </HBox>
+
+                    <TableView fx:id="tablePutusan"
+                               VBox.vgrow="ALWAYS">
+
+                        <columns>
+
+                            <TableColumn fx:id="colNomor"
+                                         text="Nomor"
+                                         prefWidth="180"/>
+
+                            <TableColumn fx:id="colNama"
+                                         text="Nama"
+                                         prefWidth="200"/>
+
+                            <TableColumn fx:id="colJenis"
+                                         text="Jenis"
+                                         prefWidth="150"/>
+
+                            <TableColumn fx:id="colVonis"
+                                         text="Vonis"
+                                         prefWidth="100"/>
+
+                            <TableColumn fx:id="colDenda"
+                                         text="Denda"
+                                         prefWidth="180"/>
+
+                        </columns>
+
+                    </TableView>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- =================== STATISTIK =================== -->
+
+            <VBox fx:id="statistikPane"
+                  spacing="25"
+                  visible="false"
+                  managed="false">
+
+                <padding>
+                    <Insets top="25"
+                            right="30"
+                            bottom="25"
+                            left="30"/>
+                </padding>
+
+                <Label text="Statistik Putusan"
+                       styleClass="title"/>
+
+                <HBox spacing="25">
+
+                    <!-- Total -->
+
+                    <VBox alignment="CENTER"
+                          HBox.hgrow="ALWAYS"
+                          styleClass="card-total">
+
+                        <Label text="📄"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Total Putusan"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblStatTotal"
+                               text="0"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                    <!-- Jenis -->
+
+                    <VBox alignment="CENTER"
+                          HBox.hgrow="ALWAYS"
+                          styleClass="card-rata">
+
+                        <Label text="💊"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Jenis Terbanyak"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblJenisTerbanyak"
+                               text="-"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                    <!-- Rata-rata -->
+
+                    <VBox alignment="CENTER"
+                          HBox.hgrow="ALWAYS"
+                          styleClass="card-denda">
+
+                        <Label text="⚖"
+                               styleClass="dashboard-icon"/>
+
+                        <Label text="Rata-rata Vonis"
+                               styleClass="dashboard-title"/>
+
+                        <Label fx:id="lblStatRataVonis"
+                               text="0"
+                               styleClass="dashboard-value"/>
+
+                    </VBox>
+
+                </HBox>
+
+                <HBox spacing="25">
+
+                    <!-- ================= PIE CHART ================= -->
+
+                    <VBox spacing="10"
+                          HBox.hgrow="ALWAYS"
+                          styleClass="card">
+
+                        <Label text="📊 Distribusi Jenis Narkotika"
+                               styleClass="chart-title"/>
+
+                        <Label text="Menampilkan komposisi jenis narkotika berdasarkan seluruh data putusan."
+                               styleClass="chart-description"/>
+
+                        <Separator/>
+
+                        <PieChart fx:id="pieJenis"
+                                  prefHeight="420"
+                                  prefWidth="500"
+                                  legendVisible="false"
+                                  labelsVisible="true"/>
+
+                        <VBox fx:id="legendBox"
+                              spacing="8"
+                              style="-fx-padding:10 0 0 0;"/>
+
+                    </VBox>
+
+                    <!-- ================= BAR CHART ================= -->
+
+                    <VBox spacing="12"
+                          HBox.hgrow="ALWAYS"
+                          styleClass="card">
+
+                        <Label text="📊 Rata-rata Vonis per Jenis"
+                               styleClass="chart-title"/>
+
+                        <Label text="Menampilkan rata-rata lama hukuman berdasarkan jenis narkotika."
+                               wrapText="true"
+                               styleClass="chart-desc"/>
+
+                        <Separator/>
+
+                        <BarChart fx:id="barVonis"
+                                  legendVisible="false"
+                                  animated="false"
+                                  categoryGap="25"
+                                  barGap="5"
+                                  prefHeight="420"
+                                  VBox.vgrow="ALWAYS">
+
+                            <xAxis>
+                                <CategoryAxis label="Jenis Narkotika"/>
+                            </xAxis>
+
+                            <yAxis>
+                                <NumberAxis label="Rata-rata Vonis (Bulan)"/>
+                            </yAxis>
+
+                        </BarChart>
+
+                    </VBox>
+
+                </HBox>
+
+                <VBox spacing="15"
+                      styleClass="insight-card">
+
+                    <Label text="💡 Insight Sistem"
+                           styleClass="title"/>
+
+                    <Separator/>
+
+                    <Label text="📌 Ringkasan Analisis"
+                           styleClass="insight-subtitle"/>
+
+                    <VBox fx:id="insightBox"
+                          spacing="12"/>
+
+                </VBox>
+
+            </VBox>
+
+        </StackPane>
+
+        </ScrollPane>
+
     </center>
 
 </BorderPane>
