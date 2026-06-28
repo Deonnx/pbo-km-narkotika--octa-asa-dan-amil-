@@ -5,6 +5,8 @@ import com.example.pbo.model.Putusan;
 import com.example.pbo.model.StatistikPutusan;
 import com.example.pbo.util.InputHandler;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KnowledgeController {
     private KnowledgeRepository repository;
@@ -28,6 +30,21 @@ public class KnowledgeController {
 
     public ArrayList<Putusan> getDaftarSemua() {
         return repository.getDaftarSemua();
+    }
+
+    public int getTotalPutusan() {
+        return repository.getDaftarSemua().size();
+    }
+
+    public double getTotalDenda() {
+
+        double total = 0;
+
+        for (Putusan p : repository.getDaftarSemua()) {
+            total += p.getVonisDenda();
+        }
+
+        return total;
     }
 
     public double getRataRataVonis() {
