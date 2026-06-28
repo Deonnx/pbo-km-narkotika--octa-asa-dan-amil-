@@ -58,4 +58,39 @@ public class KnowledgeController {
     public void updatePutusan(String nomor, String nama, String jenis, String vonis, String denda) {
         repository.updatePutusan(nomor, nama, jenis, Integer.parseInt(vonis), Double.parseDouble(denda));
     }
+
+    public ArrayList<Putusan> cariPutusan(String keyword) {
+        return repository.cariPutusan(keyword);
+    }
+
+    public String getJenisTerbanyak() {
+
+        Map<String, Integer> jumlahJenis = new HashMap<>();
+        for (Putusan p : repository.getDaftarSemua()) {
+
+            jumlahJenis.merge(
+                    p.getJenisNarkotika(),
+                    1,
+                    Integer::sum
+            );
+        }
+
+        if (jumlahJenis.isEmpty()) {
+            return "-";
+        }
+
+        String jenisTerbanyak = "";
+        int maksimum = 0;
+
+        for (Map.Entry<String, Integer> entry : jumlahJenis.entrySet()) {
+            if (entry.getValue() > maksimum) {
+
+                maksimum = entry.getValue();
+                jenisTerbanyak = entry.getKey();
+
+            }
+        }
+
+        return jenisTerbanyak;
+    }
 }
